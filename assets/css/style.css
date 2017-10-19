@@ -1,0 +1,49 @@
+.myGym {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#myGymHeader {
+  /*color: #e95420;*/
+  font-size: 1.666em;
+}
+
+.pageHeader {
+  font-size: 2.5em;
+}
+
+.form-group {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.nearbyReliefHeader {
+	font-size: 1.666em;
+}
+
+.breweryName {
+	font-weight: bold;
+	justify-content: center;
+}
+
+.mapDiv {
+	margin: 0 auto;
+	max-width: 60%;
+	max-height: 600px;
+}
+
+.map {
+	width: 100%;
+	height: auto;
+}
+
+/* Media Queries */
+
+@media screen
+and (max-width: 980px){}
+
+@media screen
+and (max-width: 768px){}
+
+@media screen
+and (max-width: 640px){}
