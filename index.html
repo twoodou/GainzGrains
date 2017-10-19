@@ -25,16 +25,16 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<button type="button" class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-				<a class="navbar-brand" href="#">Gainz & Grains</a>
+				<a class="navbar-brand pageHeader" href="#">Gainz & Grains</a>
 			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 					<li><a href="#">Link</a></li>
@@ -60,15 +60,73 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Link</a></li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
 	</nav>
-	<!-- <header>Gainz & Grains</header> -->
 
 	<div class="myGym">
+		<div class="form-group">
+			<label id="myGymHeader" for="employee-name-input">My Gym:</label>
+			<input class="form-control" id="employee-name-input" type="text">
+		</div>
 	</div>
 
-	<div class="results">
+	<div class="mapDiv">
+		<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13781.604033513948!2d-97.72537620000001!3d30.282643650000004!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1508423229682" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+	<!-- Results Container (Holds 5 Results) -->
+
+	<div class="resultsContainer container">
+		<div class="row">
+			<div class="col-md-12 nearbyRelief">
+				<header class="nearbyReliefHeader"><strong>Nearby Relief</strong></header>
+				<hr>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="results">
+			<div class="row resultRow1">
+				<div class="col-md-12">
+					<!-- <p class="resultNumber">1. </p> -->
+					<p class="breweryName"><strong>1. Pauls Brewery</strong></p>
+					<hr>
+				</div>
+			</div>
+
+			<!-- Results Row #2 -->
+			<div class="row resultRow2">
+				<div class="col-md-12">
+					<p class="breweryName">2. Pauls Brewery</p>
+					<hr>
+				</div>
+			</div>
+
+			<!-- Results Row #3 -->
+			<div class="row resultRow3">
+				<div class="col-md-12">
+					<p class="breweryName">3. Pauls Brewery</p>
+					<hr>
+				</div>
+			</div>
+
+			<!-- Results Row #4 -->
+			<div class="row resultRow4">
+				<div class="col-md-12">
+					<p class="breweryName">4. Pauls Brewery</p>
+					<hr>
+				</div>
+			</div>
+
+			<!-- Results Row #5 -->
+			<div class="row resultRow5">
+				<div class="col-md-12">
+					<p class="breweryName">5. Pauls Brewery</p>
+					<hr>
+				</div>
+			</div>
+		</div>
 	</div>
 
 

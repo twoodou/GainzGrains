@@ -1,0 +1,78 @@
+.myGym {
+	width: 60%;
+	margin: 0 auto;
+}
+
+#myGymHeader {
+  /*color: #e95420;*/
+  font-size: 1.666em;
+}
+
+.navbar-header {
+	width: 100%;
+}
+.pageHeader {
+  font-size: 2.5em;
+}
+
+.hamburger {
+	display: block;
+}
+.hamburger .navbar-toggle {
+	position: relative;
+    float: right;
+    margin-right: 15px;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: block;
+}
+
+.form-group {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.nearbyReliefHeader {
+	font-size: 1.666em;
+}
+
+.breweryName {
+	font-weight: bold;
+	justify-content: center;
+}
+
+.mapDiv {
+	position: relative;
+	padding-bottom: 65.25%;
+	padding-top: 30px;
+	/*margin-right: 5%;
+	margin-left: 5%;
+	margin-bottom: 5%;*/
+	margin: 5%;
+	height: 0;
+	overflow: hidden;
+}
+
+.mapDiv .map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Media Queries */
+
+@media screen
+and (max-width: 980px){}
+
+@media screen
+and (max-width: 768px){}
+
+@media screen
+and (max-width: 640px){}
