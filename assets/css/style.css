@@ -66,6 +66,10 @@
 	height: 100%;
 }
 
+#map {
+	display: none;
+}
+
 /* Media Queries */
 
 @media screen
