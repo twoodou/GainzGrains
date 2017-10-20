@@ -119,3 +119,4 @@
         $(".resultsContainer").append(newDiv);
       }
     }
+

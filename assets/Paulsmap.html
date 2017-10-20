@@ -20,12 +20,24 @@
   <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+<<<<<<< HEAD
     #map_canvas {
       display: none;
     }
     .mapShowHide {
       display: none;
     }
+=======
+
+    #map_canvas {
+      display: none;
+    }
+
+    .mapShowHide {
+      display: none;
+    }
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
     #map {
       height: 100%;
       display: none;
@@ -111,10 +123,18 @@
       lat: 30.2672,
       lng: -97.7431
     };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
     function displayMap() {
       document.getElementById('map').style.display = "block";
       initMap();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
     function initMap() {
       userGym = {
         lat: userGym.lat,
@@ -124,14 +144,26 @@
         center: userGym,
         zoom: 15
       });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
       // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
       // Bias the SearchBox results towards current map's viewport.
       // map.addListener('bounds_changed', function() {
       //   searchBox.setBounds(map.getBounds());
       // });
+<<<<<<< HEAD
       map.setCenter(userGym);
       // $("#map").hide();
       // Listen for the event fired when the user selects a prediction and retrieve
@@ -143,17 +175,46 @@
         var markers = [];
         infowindow = new google.maps.InfoWindow();
         var service = new google.maps.places.PlacesService(map);
+=======
+
+      map.setCenter(userGym);
+      // $("#map").hide();
+
+
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener('places_changed', function() {
+
+        // var mapLoad = document.getElementById('map');
+        displayMap();
+
+        var places = searchBox.getPlaces();
+
+        var markers = [];
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
         var newLat = places[0].geometry.viewport.f.b;
         var newLong = places[0].geometry.viewport.b.b;
         userGym = {
           lat: newLat,
           lng: newLong
         };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
         service.nearbySearch({
           location: userGym,
           radius: 1610,
           type: ['bar']
         }, callback);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
         if (places.length == 0) {
           return;
         }
@@ -169,6 +230,7 @@
             console.log("Returned place contains no geometry");
             return;
           }
+
           var icon = {
             url: place.icon,
             size: new google.maps.Size(71, 71),
@@ -182,7 +244,13 @@
             icon: icon,
             title: place.name,
             position: place.geometry.location
+
           }));
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
@@ -192,6 +260,7 @@
         });
         map.fitBounds(bounds);
       });
+
     }
     function callback(results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -203,6 +272,12 @@
       }
       createResultItems();
     }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 857ff2f11f4918465ea9da7fc692686c34adc1b9
     function createMarker(place) {
       var placeLoc = place.geometry.location;
       var marker = new google.maps.Marker({
