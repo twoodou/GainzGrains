@@ -90,7 +90,7 @@
   </style>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCls9uUYJ4bnkQM3T704Qsc9-bAyjIqL88&libraries=places&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCls9uUYJ4bnkQM3T704Qsc9-bAyjIqL88&libraries=places&callback=buffer" async defer></script>
   <script type="text/javascript" src="javascript/app.js"></script>
 
   <script type="text/javascript">
@@ -98,10 +98,28 @@
     var infowindow;
     var resultsArray = [];
     var userGym = [];
-    function initMap() {
+    var input;
+    var searchBox;
+    var places;
+
+    function buffer(){
+     
+      $("#pac-input").on("click", function() {
+        input = document.getElementById('pac-input');
+        searchBox = new google.maps.places.SearchBox(input);
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          places = searchBox.getPlaces();
+          initMap(places[0].geometry.viewport.f.b,places[0].geometry.viewport.b.b);
+      });
+    });
+    }
+
+    function initMap(lati, long) {
       userGym = {
-        lat: 30.2672,
-        lng: -97.7431
+        lat: lati,
+        lng: long
       }; //What we replace with what we type into the search bar
       map = new google.maps.Map(document.getElementById('map'), {
         center: userGym,
@@ -111,12 +129,12 @@
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: userGym,
-        radius: 1000,
+        radius: 1609,
         type: ['bar']
       }, callback);
-      // Create the search box and link it to the UI element.
-      var input = document.getElementById('pac-input');
-      var searchBox = new google.maps.places.SearchBox(input);
+      // // Create the search box and link it to the UI element.
+      // var input = document.getElementById('pac-input');
+      // var searchBox = new google.maps.places.SearchBox(input);
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
       // Bias the SearchBox results towards current map's viewport.
       map.addListener('bounds_changed', function() {
@@ -127,6 +145,10 @@
       // more details for that place.
       searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
+        console.log("This is where search bar is getting pressed?");
+        
+        console.log(places[0].geometry.viewport.b.b); //This is where we left off..
+        
         if (places.length == 0) {
           return;
         }
@@ -170,6 +192,7 @@
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
+          console.log(results[i]);
           resultsArray.push(results[i]);
         }
       }
