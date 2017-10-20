@@ -66,14 +66,27 @@
 
 	<div class="myGym">
 		<div class="form-group">
-			<label id="myGymHeader" for="employee-name-input">My Gym:</label>
-			<input class="form-control" id="employee-name-input" type="text">
+			<label id="myGymHeader" for="pac-input">My Gym:</label>
+			<br>
+			<input id="pac-input" class="controls form-control" type="text" placeholder="Search for a Gym">
+			<!-- <input class="form-control" id="employee-name-input" type="text"> -->
 		</div>
 	</div>
 
-	<input id="pac-input" class="controls" type="text" placeholder="Search for a Gym">
-	<div id="map"></div>
-	<div class="resultsContainer"></div>
+
+	<div class="container" id="mapDiv1">
+		<div class="row" id="mapDiv2">
+			<div class="col-md-6" id="mapDiv3">
+				<div id="map"></div>
+			</div>
+			<div class="col-md-6" id="results2">
+				<div class="resultsContainer" id="results3">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 	<!-- Results Container (Holds 5 Results) -->
 
@@ -300,7 +313,7 @@
 
 	<!-- Firebase Reference -->
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-	
+
 </body>
 
 </html>

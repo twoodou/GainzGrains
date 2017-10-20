@@ -6,6 +6,7 @@
 #myGymHeader {
   /*color: #e95420;*/
   font-size: 1.666em;
+	text-align: center;
 }
 
 .navbar-header {
@@ -48,20 +49,28 @@
 
 /* Media Queries */
 
-/*@media screen
+@media screen
 and (max-width: 980px){}
 
 @media screen
 and (max-width: 768px){}
 
 @media screen
-and (max-width: 640px){}*/
+and (max-width: 640px){}
 
 
 /*STUFF FROM PAULSMAP*/
 
-#map_canvas {
-	display: none;
+#mapDiv1 {
+	height: 74vh;
+}
+
+#mapDiv2 {
+	height: 100%;
+}
+
+#mapDiv3 {
+	height: 100%;
 }
 
 .mapShowHide {
@@ -71,6 +80,18 @@ and (max-width: 640px){}*/
 #map {
 	height: 100%;
 	display: none;
+}
+
+#results1 {
+	height: 74vh;
+}
+
+#results2 {
+	height: 100%;
+}
+
+#results3 {
+	height: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
