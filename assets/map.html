@@ -161,6 +161,12 @@
               title: place.name,
               position: place.geometry.location
             }));
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch({
+              
+                radius: 1000,
+                type: ['bar']
+              }, callback);
 
             if (place.geometry.viewport) {
               // Only geocodes have viewport.
@@ -172,6 +178,7 @@
           map.fitBounds(bounds);
         });
       }
+
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCls9uUYJ4bnkQM3T704Qsc9-bAyjIqL88&libraries=places&callback=initAutocomplete"
