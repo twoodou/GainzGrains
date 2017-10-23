@@ -25,12 +25,11 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+				<div class="glyphicons-beer">
+					<div class="weatherDiv">
+					</div><img src="http://www.iconarchive.com/download/i90728/icons8/windows-8/Food-Beer.ico" width="40px" height="40px">
+				</div>
+				<span class="glyphicons glyphicons-beer"></span>
 				<a class="navbar-brand pageHeader" href="#">Gainz & Grains</a>
 			</div>
 
@@ -66,7 +65,7 @@
 
 	<div class="myGym">
 		<div class="form-group">
-			<label id="myGymHeader" for="pac-input">My Gym:</label>
+			<label class="centered" id="myGymHeader" for="pac-input">My Gym</label>
 			<br>
 			<input id="pac-input" class="controls form-control" type="text" placeholder="Search for a Gym">
 			<!-- <input class="form-control" id="employee-name-input" type="text"> -->
@@ -145,180 +144,10 @@
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCls9uUYJ4bnkQM3T704Qsc9-bAyjIqL88&libraries=places&callback=initMap" async defer></script>
-	<script type="text/javascript" src="javascript/app.js"></script>
-
-	<script type="text/javascript">
-		var map;
-		var infowindow;
-		var resultsArray = [];
-		var userGym = {
-			lat: 30.2672,
-			lng: -97.7431
-		};
-
-		function displayMap() {
-			document.getElementById('map').style.display = "block";
-			initMap();
-		}
-
-		function initMap() {
-			userGym = {
-				lat: userGym.lat,
-				lng: userGym.lng
-			}; //What we replace with what we type into the search bar
-
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: userGym,
-				zoom: 15
-			});
-
-
-			// Create the search box and link it to the UI element.
-			var input = document.getElementById('pac-input');
-			var searchBox = new google.maps.places.SearchBox(input);
-			// map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-
-
-			// Bias the SearchBox results towards current map's viewport.
-			// map.addListener('bounds_changed', function() {
-			//   searchBox.setBounds(map.getBounds());
-			// });
-
-			map.setCenter(userGym);
-			// $("#map").hide();
-
-
-			// Listen for the event fired when the user selects a prediction and retrieve
-			// more details for that place.
-			searchBox.addListener('places_changed', function() {
-
-				// var mapLoad = document.getElementById('map');
-				displayMap();
-
-				var places = searchBox.getPlaces();
-
-				var markers = [];
-				infowindow = new google.maps.InfoWindow();
-				var service = new google.maps.places.PlacesService(map);
-
-				var newLat = places[0].geometry.viewport.f.b;
-				var newLong = places[0].geometry.viewport.b.b;
-				userGym = {
-					lat: newLat,
-					lng: newLong
-				};
-
-				service.nearbySearch({
-					location: userGym,
-					radius: 1610,
-					type: ['bar']
-				}, callback);
-
-
-				if (places.length == 0) {
-					return;
-				}
-
-				// Clear out the old markers.
-				markers.forEach(function(marker) {
-					marker.setMap(null);
-				});
-				markers = [];
-
-				// For each place, get the icon, name and location.
-				var bounds = new google.maps.LatLngBounds();
-				places.forEach(function(place) {
-					if (!place.geometry) {
-						console.log("Returned place contains no geometry");
-						return;
-					}
-
-					var icon = {
-						url: place.icon,
-						size: new google.maps.Size(71, 71),
-						origin: new google.maps.Point(0, 0),
-						anchor: new google.maps.Point(17, 34),
-						scaledSize: new google.maps.Size(25, 25)
-					};
-
-					// Create a marker for each place.
-					markers.push(new google.maps.Marker({
-						map: map,
-						icon: icon,
-						title: place.name,
-						position: place.geometry.location
-
-					}));
-
-
-					if (place.geometry.viewport) {
-						// Only geocodes have viewport.
-						bounds.union(place.geometry.viewport);
-					} else {
-						bounds.extend(place.geometry.location);
-					}
-				});
-				map.fitBounds(bounds);
-			});
-
-		}
-
-		function callback(results, status) {
-			if (status === google.maps.places.PlacesServiceStatus.OK) {
-				for (var i = 0; i < results.length; i++) {
-					createMarker(results[i]);
-					resultsArray.push(results[i]);
-				}
-			}
-			createResultItems();
-		}
-
-
-
-		function createMarker(place) {
-			var placeLoc = place.geometry.location;
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location
-			});
-
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.setContent(place.name);
-				infowindow.open(map, this);
-			});
-		}
-
-		function createResultItems() {
-
-			console.log(resultsArray);
-
-			for (var i = 0; i < resultsArray.length; i++) {
-
-				var name = $("<div>").append(resultsArray[i].name).addClass("resultName");
-				var rating = $("<div>").append("Rating: " + resultsArray[i].rating + " / 5").addClass("resultRating");
-				var vicinity = $("<div>").append(resultsArray[i].vicinity).addClass("resultVicinity");
-				var priceLevel = $("<div>").append("Price: " + resultsArray[i].price_level).addClass("resultPrice");
-				var hr = $("<hr>").addClass("resultHR");
-
-				var newDiv = $("<div>");
-
-
-
-				newDiv.append(name);
-				newDiv.append(vicinity);
-				newDiv.append(rating);
-				// newDiv.append(priceLevel);
-				newDiv.append(hr);
-
-				$(".resultsContainer").append(newDiv);
-
-			}
-		}
-	</script>
-
 	<!-- Firebase Reference -->
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 
 </body>
 

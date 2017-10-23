@@ -1,36 +1,42 @@
+body {
+  background: url("../images/wheat.jpg");
+  background-size: cover;
+}
+
+.navbar {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
+}
+
 .myGym {
-	width: 60%;
-	margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
 
 #myGymHeader {
-  /*color: #e95420;*/
+  width: 100%;
+  text-align: center;
+  color: white;
   font-size: 1.666em;
-	text-align: center;
 }
 
 .navbar-header {
-	width: 100%;
+  width: 100%;
 }
+
 .pageHeader {
   font-size: 2.5em;
 }
 
-.hamburger {
-	display: block;
-}
-.hamburger .navbar-toggle {
-	position: relative;
+.glyphicons-beer{
+    width: 40px;
+    height: 40px;
     float: right;
-    margin-right: 15px;
-    padding: 9px 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    display: block;
+    padding-top: 3px;
 }
 
 .form-group {
@@ -39,157 +45,175 @@
 }
 
 .nearbyReliefHeader {
-	font-size: 1.666em;
+  font-size: 1.666em;
 }
 
 .breweryName {
-	font-weight: bold;
-	justify-content: center;
+  font-weight: bold;
+  justify-content: center;
 }
 
 /* Media Queries */
 
-@media screen
-and (max-width: 980px){}
+@media screen and (max-width: 980px) {}
 
-@media screen
-and (max-width: 768px){}
+@media screen and (max-width: 768px) {}
 
-@media screen
-and (max-width: 640px){}
-
+@media screen and (max-width: 640px) {}
 
 /*STUFF FROM PAULSMAP*/
 
 #mapDiv1 {
-	height: 74vh;
-	padding-top: 2%;
+  height: 74vh;
+  padding-top: 2%;
 }
 
 #mapDiv2 {
-	height: 100%;
+  height: 100%;
 }
 
 #mapDiv3 {
-	height: 100%;
+  height: 100%;
+  margin-bottom: 2.5%;
 }
 
 .mapShowHide {
-	display: none;
+  display: none;
 }
 
 #map {
-	height: 100%;
-	display: none;
+  height: 100%;
+  display: none;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
 }
 
-/*#results1 {
-	height: 74vh;
+/*#resultsDiv {
+	background-color: #e95420;
+	color: white;
 }*/
 
 #results2 {
-	height: 100%;
-	overflow-y: scroll;
+  height: 100%;
+  overflow-y: scroll;
+  display: none;
+  background-color: #e95420;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
+  color: white;
 }
 
 #results3 {
-	height: 100%;
+  height: 100%;
 }
 
 .resultName {
-	font-size: 1.666em;
-	text-decoration: underline;
+  font-size: 1.666em;
+  text-decoration: underline;
 }
 
 .resultRating {
-	font-size: 1.166em;
+  font-size: 1.166em;
 }
 
 .resultVicinity {
-	font-size: 1.166em;
+  font-size: 1.166em;
 }
 
 .resultHR {
-	width: 100%;
+  width: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
 
-html,
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 #description {
-	font-family: Roboto;
-	font-size: 15px;
-	font-weight: 300;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
 }
 
 #infowindow-content .title {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 #infowindow-content {
-	display: none;
+  display: none;
 }
 
 #map #infowindow-content {
-	display: inline;
+  display: inline;
 }
 
 .pac-card {
-	margin: 10px 10px 0 0;
-	border-radius: 2px 0 0 2px;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	outline: none;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-	background-color: #fff;
-	font-family: Roboto;
+  margin: 10px 10px 0 0;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  font-family: Roboto;
 }
 
 #pac-container {
-	padding-bottom: 12px;
-	margin-right: 12px;
+  padding-bottom: 12px;
+  margin-right: 12px;
 }
 
 .pac-controls {
-	display: inline-block;
-	padding: 5px 11px;
+  display: inline-block;
+  padding: 5px 11px;
 }
 
 .pac-controls label {
-	font-family: Roboto;
-	font-size: 13px;
-	font-weight: 300;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 #pac-input {
-	background-color: #fff;
-	font-family: Roboto;
-	font-size: 15px;
-	font-weight: 300;
-	margin-left: 12px;
-	padding: 0 11px 0 13px;
-	text-overflow: ellipsis;
-	width: 400px;
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 100%;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  /* for old Konqueror browsers */
 }
 
 #pac-input:focus {
-	border-color: #4d90fe;
+  border-color: #4d90fe;
 }
 
 #title {
-	color: #fff;
-	background-color: #4d90fe;
-	font-size: 25px;
-	font-weight: 500;
-	padding: 6px 12px;
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
 }
 
 #target {
-	width: 345px;
+  width: 345px;
 }
