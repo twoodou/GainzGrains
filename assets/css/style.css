@@ -63,6 +63,7 @@ and (max-width: 640px){}
 
 #mapDiv1 {
 	height: 74vh;
+	padding-top: 2%;
 }
 
 #mapDiv2 {
@@ -82,16 +83,34 @@ and (max-width: 640px){}
 	display: none;
 }
 
-#results1 {
+/*#results1 {
 	height: 74vh;
-}
+}*/
 
 #results2 {
 	height: 100%;
+	overflow-y: scroll;
 }
 
 #results3 {
 	height: 100%;
+}
+
+.resultName {
+	font-size: 1.666em;
+	text-decoration: underline;
+}
+
+.resultRating {
+	font-size: 1.166em;
+}
+
+.resultVicinity {
+	font-size: 1.166em;
+}
+
+.resultHR {
+	width: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */

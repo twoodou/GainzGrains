@@ -291,19 +291,25 @@
 
 		function createResultItems() {
 
+			console.log(resultsArray);
+
 			for (var i = 0; i < resultsArray.length; i++) {
 
 				var name = $("<div>").append(resultsArray[i].name).addClass("resultName");
-				var rating = $("<div>").append(resultsArray[i].rating).addClass("resultRating");
-				var vicinity = $("<div>").append(resultsArray[i].vicinity).addClass("resultPhoto");
+				var rating = $("<div>").append("Rating: " + resultsArray[i].rating + " / 5").addClass("resultRating");
+				var vicinity = $("<div>").append(resultsArray[i].vicinity).addClass("resultVicinity");
+				var priceLevel = $("<div>").append("Price: " + resultsArray[i].price_level).addClass("resultPrice");
+				var hr = $("<hr>").addClass("resultHR");
 
 				var newDiv = $("<div>");
 
 
 
 				newDiv.append(name);
-				newDiv.append(rating);
 				newDiv.append(vicinity);
+				newDiv.append(rating);
+				// newDiv.append(priceLevel);
+				newDiv.append(hr);
 
 				$(".resultsContainer").append(newDiv);
 
