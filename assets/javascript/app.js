@@ -1,37 +1,6 @@
-<<<<<<< HEAD
 
-var yelpApiKey = qAIGl2TCR9k7aJlQZtZu5g;
-var yelpAPI = "https://api.yelp.com/v3/businesses/qAIGl2TCR9k7aJlQZtZu5g";
-
-var zomaptoAPIKey = 9e0e6de51e155e3fec22b0bf929130c9
-
-/*
-what we will need to store in our firebase
- - number of people that have used the app/ sue it that day
- -store the person's last searched gym to auto populate the breweries nearby
-
-
-Get the AuthProvider object that corresponds to the provider you want to link to the user's account. Examples:
-var provider = new firebase.auth.GoogleAuthProvider();
-var provider = new firebase.auth.FacebookAuthProvider();
-
-
-To sign in with a pop-up window, call linkWithPopup:
-auth.currentUser.linkWithPopup(provider).then(function(result) {
-  // Accounts successfully linked.
-  var credential = result.credential;
-  var user = result.user;
-  // ...
-}).catch(function(error) {
-  // Handle Errors here.
-  // ...
-});
-
- */
-
-
-  // Initialize Firebase
-  var config = {
+// Firebase variables
+var config = {
     apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
     authDomain: "gainzandgrains-1508352019290.firebaseapp.com",
     databaseURL: "https://gainzandgrains-1508352019290.firebaseio.com",
@@ -40,52 +9,99 @@ auth.currentUser.linkWithPopup(provider).then(function(result) {
     messagingSenderId: "436760734338"
   };
   firebase.initializeApp(config);
+var database = firebase.database();
+var users = "";
+var clicks;
+var clickCounter;
+
+$( window ).on( "load", function() {
+  database.ref().on("value", function(childSnapshot, prevChildKey) {
+clickCounter = childSnapshot.val().totalSearches;
+});
+});
 
 
-var users: "";
-var searched: "";
+// ---------------------------------------
 
-
-
-
-=======
 var map;
+var city;
+var service;
 var infowindow;
 var resultsArray = [];
+var phoneNumberArray = [];
+var userGym = {
+  lat: 30.2672,
+  lng: -97.7431
+};
+
+function displayMap() {
+  document.getElementById('map').style.display = "block";
+  document.getElementById('results2').style.display = "block";
+  initMap();
+  clickCounter++;
+  database.ref().set({
+  totalSearches: clickCounter
+});
+}
 
 function initMap() {
-  var pyrmont = {
-    lat: 30.2672,
-    lng: -97.7431
+  userGym = {
+    lat: userGym.lat,
+    lng: userGym.lng
   }; //What we replace with what we type into the search bar
 
   map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
+    center: userGym,
     zoom: 15
   });
 
-  infowindow = new google.maps.InfoWindow();
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch({
-    location: pyrmont,
-    radius: 1000,
-    type: ['bar']
-  }, callback);
+
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
 
   // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
-    searchBox.setBounds(map.getBounds());
-  });
+  // map.addListener('bounds_changed', function() {
+  //   searchBox.setBounds(map.getBounds());
+  // });
 
-  var markers = [];
+  map.setCenter(userGym);
+  // $("#map").hide();
+
+
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
+
+
+    // var mapLoad = document.getElementById('map');
+    displayMap();
+
     var places = searchBox.getPlaces();
+
+    console.log(places);
+    city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
+    weather();
+
+    var markers = [];
+    infowindow = new google.maps.InfoWindow();
+    service = new google.maps.places.PlacesService(map);
+
+    var newLat = places[0].geometry.viewport.f.b;
+    var newLong = places[0].geometry.viewport.b.b;
+    userGym = {
+      lat: newLat,
+      lng: newLong
+    };
+
+    service.nearbySearch({
+      location: userGym,
+      radius: 1610,
+      type: ['bar']
+    }, callback);
 
     if (places.length == 0) {
       return;
@@ -104,6 +120,7 @@ function initMap() {
         console.log("Returned place contains no geometry");
         return;
       }
+
       var icon = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -118,7 +135,9 @@ function initMap() {
         icon: icon,
         title: place.name,
         position: place.geometry.location
+
       }));
+
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
@@ -129,17 +148,20 @@ function initMap() {
     });
     map.fitBounds(bounds);
   });
+
 }
 
 function callback(results, status) {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
+
       createMarker(results[i]);
       resultsArray.push(results[i]);
     }
   }
   createResultItems();
 }
+
 
 function createMarker(place) {
   var placeLoc = place.geometry.location;
@@ -156,22 +178,51 @@ function createMarker(place) {
 
 function createResultItems() {
 
+  console.log(resultsArray);
+
+
+
+  $(".resultsContainer").empty();
+
   for (var i = 0; i < resultsArray.length; i++) {
 
     var name = $("<div>").append(resultsArray[i].name).addClass("resultName");
-    var rating = $("<div>").append(resultsArray[i].rating).addClass("resultRating");
-    var vicinity = $("<div>").append(resultsArray[i].vicinity).addClass("resultPhoto");
+    var rating = $("<div>").append("Rating: " + resultsArray[i].rating + " / 5").addClass("resultRating");
+    var vicinity = $("<div>").append(resultsArray[i].vicinity).addClass("resultVicinity");
+    var priceLevel = $("<div>").append("Price: " + resultsArray[i].price_level).addClass("resultPrice");
+    var hr = $("<hr>").addClass("resultHR");
 
-    var newDiv = $("<div>");
+    var newDiv = $("<div>").addClass("resultsDiv");
 
 
 
     newDiv.append(name);
-    newDiv.append(rating);
     newDiv.append(vicinity);
+    newDiv.append(rating);
+    // newDiv.append(priceLevel);
+    newDiv.append(hr);
 
     $(".resultsContainer").append(newDiv);
 
   }
+  resultsArray = [];
 }
->>>>>>> 0d532ac76e3d1966bf0fa604b5366094a8244374
+
+
+function weather() {
+
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=00bc66aa1b306a77373271e9f6beecf8";
+
+$.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(response) {
+        console.log(response);
+
+        var weather = parseInt(response.main.temp) * 1.8 - 459.67;
+        $(".weatherDiv").html(weather);
+      });
+
+    }

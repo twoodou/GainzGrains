@@ -10,16 +10,28 @@
 </head>
 
 <body>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="map"></div>
-  <div class="resultsContainer"></div>
+  <!-- <input id="userSearch" type="text" placeholder="Search for a Gym"> -->
+  <input id="pac-input" class="controls" type="text" placeholder="Search for a Gym">
+  <!-- <div id="map_canvas"> -->
+    <div id="map"></div>
+    <div class="resultsContainer"></div>
+  <!-- </div> -->
 
   <style>
     /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 
+    #map_canvas {
+      display: none;
+    }
+
+    .mapShowHide {
+      display: none;
+    }
+
     #map {
       height: 100%;
+      display: none;
     }
 
     /* Optional: Makes the sample page fill the window. */
@@ -112,12 +124,20 @@
     var map;
     var infowindow;
     var resultsArray = [];
-    var userGym = [];
+    var userGym = {
+      lat: 30.2672,
+      lng: -97.7431
+    };
+
+    function displayMap() {
+      document.getElementById('map').style.display = "block";
+      initMap();
+    }
 
     function initMap() {
       userGym = {
-        lat: 30.2672,
-        lng: -97.7431
+        lat: userGym.lat,
+        lng: userGym.lng
       }; //What we replace with what we type into the search bar
 
       map = new google.maps.Map(document.getElementById('map'), {
@@ -125,28 +145,49 @@
         zoom: 15
       });
 
-      infowindow = new google.maps.InfoWindow();
-      var service = new google.maps.places.PlacesService(map);
-      service.nearbySearch({
-        location: userGym,
-        radius: 1000,
-        type: ['bar']
-      }, callback);
+
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
 
       // Bias the SearchBox results towards current map's viewport.
-      map.addListener('bounds_changed', function() {
-        searchBox.setBounds(map.getBounds());
-      });
+      // map.addListener('bounds_changed', function() {
+      //   searchBox.setBounds(map.getBounds());
+      // });
 
-      var markers = [];
+      map.setCenter(userGym);
+      // $("#map").hide();
+
+
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function() {
+
+        // var mapLoad = document.getElementById('map');
+        displayMap();
+
         var places = searchBox.getPlaces();
+
+        var markers = [];
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+
+        var newLat = places[0].geometry.viewport.f.b;
+        var newLong = places[0].geometry.viewport.b.b;
+        userGym = {
+          lat: newLat,
+          lng: newLong
+        };
+
+        service.nearbySearch({
+          location: userGym,
+          radius: 1610,
+          type: ['bar']
+        }, callback);
+
 
         if (places.length == 0) {
           return;
@@ -165,6 +206,7 @@
             console.log("Returned place contains no geometry");
             return;
           }
+
           var icon = {
             url: place.icon,
             size: new google.maps.Size(71, 71),
@@ -179,7 +221,9 @@
             icon: icon,
             title: place.name,
             position: place.geometry.location
+
           }));
+
 
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
@@ -190,6 +234,7 @@
         });
         map.fitBounds(bounds);
       });
+
     }
 
     function callback(results, status) {
@@ -201,6 +246,8 @@
       }
       createResultItems();
     }
+
+
 
     function createMarker(place) {
       var placeLoc = place.geometry.location;

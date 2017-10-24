@@ -25,12 +25,11 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+				<div class="glyphicons-beer">
+					<div class="weatherDiv">
+					</div><img src="http://www.iconarchive.com/download/i90728/icons8/windows-8/Food-Beer.ico" width="40px" height="40px">
+				</div>
+				<span class="glyphicons glyphicons-beer"></span>
 				<a class="navbar-brand pageHeader" href="#">Gainz & Grains</a>
 			</div>
 
@@ -66,17 +65,31 @@
 
 	<div class="myGym">
 		<div class="form-group">
-			<label id="myGymHeader" for="employee-name-input">My Gym:</label>
-			<input class="form-control" id="employee-name-input" type="text">
+			<label class="centered" id="myGymHeader" for="pac-input">My Gym</label>
+			<br>
+			<input id="pac-input" class="controls form-control" type="text" placeholder="Search for a Gym">
+			<!-- <input class="form-control" id="employee-name-input" type="text"> -->
 		</div>
 	</div>
 
-	<div class="mapDiv">
-		<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13781.604033513948!2d-97.72537620000001!3d30.282643650000004!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1508423229682" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+	<div class="container" id="mapDiv1">
+		<div class="row" id="mapDiv2">
+			<div class="col-md-6" id="mapDiv3">
+				<div id="map"></div>
+			</div>
+			<div class="col-md-6" id="results2">
+				<div class="resultsContainer" id="results3">
+				</div>
+			</div>
+		</div>
 	</div>
+
+
+
 	<!-- Results Container (Holds 5 Results) -->
 
-	<div class="resultsContainer container">
+	<!-- <div class="resultsContainer container">
 		<div class="row">
 			<div class="col-md-12 nearbyRelief">
 				<header class="nearbyReliefHeader"><strong>Nearby Relief</strong></header>
@@ -89,13 +102,12 @@
 		<div class="results">
 			<div class="row resultRow1">
 				<div class="col-md-12">
-					<!-- <p class="resultNumber">1. </p> -->
 					<p class="breweryName"><strong>1. Pauls Brewery</strong></p>
 					<hr>
 				</div>
 			</div>
 
-			<!-- Results Row #2 -->
+			Results Row #2
 			<div class="row resultRow2">
 				<div class="col-md-12">
 					<p class="breweryName">2. Pauls Brewery</p>
@@ -103,7 +115,7 @@
 				</div>
 			</div>
 
-			<!-- Results Row #3 -->
+			Results Row #3
 			<div class="row resultRow3">
 				<div class="col-md-12">
 					<p class="breweryName">3. Pauls Brewery</p>
@@ -111,7 +123,7 @@
 				</div>
 			</div>
 
-			<!-- Results Row #4 -->
+			Results Row #4
 			<div class="row resultRow4">
 				<div class="col-md-12">
 					<p class="breweryName">4. Pauls Brewery</p>
@@ -119,7 +131,7 @@
 				</div>
 			</div>
 
-			<!-- Results Row #5 -->
+			Results Row #5
 			<div class="row resultRow5">
 				<div class="col-md-12">
 					<p class="breweryName">5. Pauls Brewery</p>
@@ -127,17 +139,16 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 
-	<!-- JQuery -->
-	<script src="https://code.jquery.com/jquery.js"></script>
-
-	<!-- Linking app.js -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCls9uUYJ4bnkQM3T704Qsc9-bAyjIqL88&libraries=places&callback=initMap" async defer></script>
+	<!-- Firebase Reference -->
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
 
-	<!-- Firebase Reference -->
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
 </body>
 
 </html>
