@@ -83,8 +83,8 @@ function initMap() {
     var places = searchBox.getPlaces();
 
     console.log(places);
-    city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
-    weather();
+    // city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
+    // weather();
 
     var markers = [];
     infowindow = new google.maps.InfoWindow();
@@ -99,8 +99,8 @@ function initMap() {
 
     service.nearbySearch({
       location: userGym,
-      radius: 1610,
-      type: ['bar']
+      type: ['bar'],
+      rankBy: google.maps.places.RankBy.DISTANCE
     }, callback);
 
     if (places.length == 0) {
@@ -147,6 +147,9 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
+
+
+    weather();
   });
 
 }
@@ -211,7 +214,7 @@ function createResultItems() {
 
 function weather() {
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=00bc66aa1b306a77373271e9f6beecf8";
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
 
 $.ajax({
         url: queryURL,
@@ -221,7 +224,7 @@ $.ajax({
       .done(function(response) {
         console.log(response);
 
-        var weather = parseInt(response.main.temp) * 1.8 - 459.67;
+        var weather = Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
         $(".weatherDiv").html(weather);
       });
 
