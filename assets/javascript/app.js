@@ -83,8 +83,8 @@ function initMap() {
     var places = searchBox.getPlaces();
 
     console.log(places);
-    city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
-    weather();
+    // city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
+    // weather();
 
     var markers = [];
     infowindow = new google.maps.InfoWindow();
@@ -147,6 +147,8 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
+    //city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
+    //weather();
   });
 
 }
