@@ -1,23 +1,22 @@
-
 // Firebase variables
 var config = {
-    apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
-    authDomain: "gainzandgrains-1508352019290.firebaseapp.com",
-    databaseURL: "https://gainzandgrains-1508352019290.firebaseio.com",
-    projectId: "gainzandgrains-1508352019290",
-    storageBucket: "gainzandgrains-1508352019290.appspot.com",
-    messagingSenderId: "436760734338"
-  };
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
+  authDomain: "gainzandgrains-1508352019290.firebaseapp.com",
+  databaseURL: "https://gainzandgrains-1508352019290.firebaseio.com",
+  projectId: "gainzandgrains-1508352019290",
+  storageBucket: "gainzandgrains-1508352019290.appspot.com",
+  messagingSenderId: "436760734338"
+};
+firebase.initializeApp(config);
 var database = firebase.database();
 var users = "";
 var clicks;
 var clickCounter;
 
-$( window ).on( "load", function() {
+$(window).on("load", function() {
   database.ref().on("value", function(childSnapshot, prevChildKey) {
-clickCounter = childSnapshot.val().totalSearches;
-});
+    clickCounter = childSnapshot.val().totalSearches;
+  });
 });
 
 
@@ -40,8 +39,8 @@ function displayMap() {
   initMap();
   clickCounter++;
   database.ref().set({
-  totalSearches: clickCounter
-});
+    totalSearches: clickCounter
+  });
 }
 
 function initMap() {
@@ -214,18 +213,19 @@ function createResultItems() {
 
 function weather() {
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
+  var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
 
-$.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-      // We store all of the retrieved data inside of an object called "response"
-      .done(function(response) {
-        console.log(response);
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+    // We store all of the retrieved data inside of an object called "response"
+    .done(function(response) {
+      console.log(response);
+      var desc = response.weather[0].description;
+      desc = desc.charAt(0).toUpperCase() + desc.slice(1); //capitilzeds the first letter
+      var weather = desc + " " + Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
+      $(".weatherDiv").html(weather);
+    });
 
-        var weather = Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
-        $(".weatherDiv").html(weather);
-      });
-
-    }
+}

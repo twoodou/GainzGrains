@@ -9,24 +9,26 @@
   -khtml-border-radius: 10px;
   width: 90%;
   margin-left: 5%;
+  margin-bottom: -8px;
+  margin-top: -10px;
 }
 
 .jumbotron h1 {
   margin-left: 2.666%;
+  width: 60%;
+  font-size:50px;
 }
 
 .jumbotron p {
   position: relative;
   font-size: 1.333em;
   margin-left: 2.666%;
-  padding-bottom: 0.666%;
 }
 
 .weatherDiv {
-	position: absolute;
-	right: 0;
-	margin-right: 1%;
-	font-size: 1.333em;
+  float: right;
+  margin: 8px;
+  font-size: 1.333em;
 }
 
 body {
@@ -46,6 +48,7 @@ body {
 .myGym {
   width: 60%;
   margin: 0 auto;
+  margin-bottom: -8px;
 }
 
 #myGymHeader {
@@ -61,13 +64,6 @@ body {
 
 .pageHeader {
   font-size: 2.5em;
-}
-
-.glyphicons-beer{
-    width: 40px;
-    height: 40px;
-    float: right;
-    padding-top: 3px;
 }
 
 .form-group {
@@ -97,6 +93,8 @@ body {
 #mapDiv1 {
   height: 74vh;
   padding-top: 2%;
+  width: 90%;
+  margin-left: 4.1%;
 }
 
 #mapDiv2 {
@@ -124,8 +122,13 @@ body {
 }
 
 /*#resultsDiv {
+<<<<<<< HEAD
+  background-color: #e95420;
+  color: white;
+=======
 	background-color: #e95420;
 	color: white;
+>>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
 }*/
 
 #results2 {
@@ -140,6 +143,8 @@ body {
   -khtml-border-radius: 10px;
   /* for old Konqueror browsers */
   color: white;
+  margin-bottom: 2.5%;
+
 }
 
 #results3 {
@@ -164,12 +169,6 @@ body {
 }
 
 /* Optional: Makes the sample page fill the window. */
-
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 #description {
   font-family: Roboto;
