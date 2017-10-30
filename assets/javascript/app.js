@@ -224,8 +224,9 @@ $.ajax({
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
         console.log(response);
-
-        var weather = Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
+        var desc = response.weather[0].description;
+        desc = desc.charAt(0).toUpperCase() + desc.slice(1);  //capitilzeds the first letter
+        var weather = desc + " " + Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
         $(".weatherDiv").html(weather);
       });
 

@@ -25,6 +25,7 @@
 
 .weatherDiv {
   float: right;
+  margin: 8px;
   font-size: 1.333em;
 }
 
@@ -144,6 +145,8 @@ body {
   -khtml-border-radius: 10px;
   /* for old Konqueror browsers */
   color: white;
+  margin-bottom: 2.5%;
+
 }
 
 #results3 {
