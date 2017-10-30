@@ -13,6 +13,7 @@
 
 .jumbotron h1 {
   margin-left: 2.666%;
+  width: 60%;
 }
 
 .jumbotron p {
@@ -23,9 +24,7 @@
 }
 
 .weatherDiv {
-  position: absolute;
-  right: 0;
-  margin-right: 1%;
+  float: right;
   font-size: 1.333em;
 }
 

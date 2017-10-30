@@ -1,4 +1,5 @@
 
+
 // Firebase variables
 var config = {
     apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
@@ -83,13 +84,8 @@ function initMap() {
     var places = searchBox.getPlaces();
 
     console.log(places);
-<<<<<<< HEAD
-    city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
-    weather();
-=======
     // city = places[0].address_components[4].long_name + "," + places[0].address_components[6].long_name;
     // weather();
->>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
 
     var markers = [];
     infowindow = new google.maps.InfoWindow();
@@ -104,13 +100,8 @@ function initMap() {
 
     service.nearbySearch({
       location: userGym,
-<<<<<<< HEAD
-      radius: 1610,
-      type: ['bar']
-=======
       type: ['bar'],
       rankBy: google.maps.places.RankBy.DISTANCE
->>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
     }, callback);
 
     if (places.length == 0) {
@@ -157,12 +148,9 @@ function initMap() {
       }
     });
     map.fitBounds(bounds);
-<<<<<<< HEAD
-=======
 
 
     weather();
->>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
   });
 
 }
@@ -227,11 +215,7 @@ function createResultItems() {
 
 function weather() {
 
-<<<<<<< HEAD
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=00bc66aa1b306a77373271e9f6beecf8";
-=======
 var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
->>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
 
 $.ajax({
         url: queryURL,
@@ -241,16 +225,8 @@ $.ajax({
       .done(function(response) {
         console.log(response);
 
-<<<<<<< HEAD
-        var weather = parseInt(response.main.temp) * 1.8 - 459.67;
-        $(".weatherDiv").html(weather);
-      });
-
-    }
-=======
         var weather = Math.ceil(parseInt(response.main.temp) * 1.8 - 459.67) + "&deg F";
         $(".weatherDiv").html(weather);
       });
 
     }
->>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
