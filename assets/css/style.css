@@ -124,8 +124,13 @@ body {
 }
 
 /*#resultsDiv {
+<<<<<<< HEAD
   background-color: #e95420;
   color: white;
+=======
+	background-color: #e95420;
+	color: white;
+>>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
 }*/
 
 #results2 {
