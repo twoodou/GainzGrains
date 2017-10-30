@@ -1,3 +1,33 @@
+.jumbotron {
+  color: white;
+  background-color: #e95420;
+  padding: 0px 0px 0px 0px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* future proofing */
+  -khtml-border-radius: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.jumbotron h1 {
+  margin-left: 2.666%;
+  width: 60%;
+}
+
+.jumbotron p {
+  position: relative;
+  font-size: 1.333em;
+  margin-left: 2.666%;
+  padding-bottom: 0.666%;
+}
+
+.weatherDiv {
+  float: right;
+  font-size: 1.333em;
+}
+
 body {
   background: url("../images/wheat.jpg");
   background-size: cover;
@@ -18,7 +48,7 @@ body {
 }
 
 #myGymHeader {
-  width: 100%;
+  width: 90%;
   text-align: center;
   color: white;
   font-size: 1.666em;
@@ -59,7 +89,8 @@ body {
 
 @media screen and (max-width: 768px) {}
 
-@media screen and (max-width: 640px) {}
+@media screen and (max-width: 640px) {
+}
 
 /*STUFF FROM PAULSMAP*/
 
@@ -93,8 +124,13 @@ body {
 }
 
 /*#resultsDiv {
+<<<<<<< HEAD
+  background-color: #e95420;
+  color: white;
+=======
 	background-color: #e95420;
 	color: white;
+>>>>>>> 6c92bab56952be0edde92ece3e63c99e636b609a
 }*/
 
 #results2 {
@@ -109,6 +145,7 @@ body {
   -khtml-border-radius: 10px;
   /* for old Konqueror browsers */
   color: white;
+  margin: 15px;
 }
 
 #results3 {
