@@ -93,6 +93,8 @@ body {
 #mapDiv1 {
   height: 74vh;
   padding-top: 2%;
+  width: 90%;
+  margin-left: 4.1%;
 }
 
 #mapDiv2 {

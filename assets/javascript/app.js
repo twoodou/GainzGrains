@@ -1,24 +1,23 @@
 
-
 // Firebase variables
 var config = {
-    apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
-    authDomain: "gainzandgrains-1508352019290.firebaseapp.com",
-    databaseURL: "https://gainzandgrains-1508352019290.firebaseio.com",
-    projectId: "gainzandgrains-1508352019290",
-    storageBucket: "gainzandgrains-1508352019290.appspot.com",
-    messagingSenderId: "436760734338"
-  };
-  firebase.initializeApp(config);
+  apiKey: "AIzaSyCcnhW2HKL7odkcP1KpkX2aW5E-GDVHPYw",
+  authDomain: "gainzandgrains-1508352019290.firebaseapp.com",
+  databaseURL: "https://gainzandgrains-1508352019290.firebaseio.com",
+  projectId: "gainzandgrains-1508352019290",
+  storageBucket: "gainzandgrains-1508352019290.appspot.com",
+  messagingSenderId: "436760734338"
+};
+firebase.initializeApp(config);
 var database = firebase.database();
 var users = "";
 var clicks;
 var clickCounter;
 
-$( window ).on( "load", function() {
+$(window).on("load", function() {
   database.ref().on("value", function(childSnapshot, prevChildKey) {
-clickCounter = childSnapshot.val().totalSearches;
-});
+    clickCounter = childSnapshot.val().totalSearches;
+  });
 });
 
 
@@ -41,8 +40,8 @@ function displayMap() {
   initMap();
   clickCounter++;
   database.ref().set({
-  totalSearches: clickCounter
-});
+    totalSearches: clickCounter
+  });
 }
 
 function initMap() {
