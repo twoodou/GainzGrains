@@ -59,6 +59,7 @@ function initMap() {
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
+  console.log(input);
   var searchBox = new google.maps.places.SearchBox(input);
   // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -215,7 +216,7 @@ function createResultItems() {
 
 function weather() {
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
 
 $.ajax({
         url: queryURL,
