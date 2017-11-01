@@ -213,7 +213,7 @@ function createResultItems() {
 
 function weather() {
 
-  var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + userGym.lat + "&lon=" + userGym.lng + "&appid=850bd46a652d4b267496f1dd05231bce";
 
   $.ajax({
       url: queryURL,
