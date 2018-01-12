@@ -1,6 +1,4 @@
 # Gains'N'Grains
-This application finds nearby bars to your local gym. It takes advantage of Google maps API to find and pin nearby locations with the tag 'bar'.
-
 This application uses Google's Maps API to search for local bars and pubs based off any location that you input.  May your workouts be strong and your nights long.
 
 
