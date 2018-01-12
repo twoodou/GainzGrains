@@ -1,22 +1,23 @@
-# GainzGrains
+# Gains'N'Grains
 This application finds nearby bars to your local gym. It takes advantage of Google maps API to find and pin nearby locations with the tag 'bar'.
+
+This application uses Google's Maps API to search for local bars and pubs based off any location that you input.  May your workouts be strong and your nights long.
 
 
 ### Instructions
 
-1. Click on the designated link:     https://wholetpaulin.github.io/GainzGrains/
+1. Click on the GitHub Pages link:     https://twoodou.github.io/GainzGrains/
 
-2. Type in the location you want to find a bar by. 
+2. Type in a location. 
 
-3. Selecting a location will populate the map (right) and the list (left) with nearby bars and their google reviews.
+3. A map will appear centered on your provided location, populated with popular local bars and Google reviews.
 
 
-### One More Thing
+### Cheers, thanks for stopping by!
 
-If you have any questions about this project or the material, please feel free to contact me.
+I hope you enjoyed my app.  If you have any questions or comments, please let me know.
 
-**Thanks for stopping by!**
 
 ## Copyright
 
-Paul Trettenero (C) 2017. All Rights Reserved.
+Thomas Wood (C) 2017.
